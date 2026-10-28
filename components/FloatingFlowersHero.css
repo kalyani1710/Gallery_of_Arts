@@ -1,0 +1,92 @@
+ 
+.floating-flowers-hero {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+  perspective: 1000px;
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(252, 231, 243, 0.6), transparent 45%),
+    radial-gradient(ellipse at 80% 75%, rgba(254, 243, 199, 0.5), transparent 45%);
+}
+
+.flower-webgl-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.floating-flower-plane {
+  position: absolute;
+  width: var(--flower-size, 85px);
+  height: var(--flower-size, 85px);
+  display: grid;
+  place-items: center;
+  transform-style: preserve-3d;
+  opacity: 0.9;
+}
+
+.css-flower {
+  position: relative;
+  width: 70%;
+  height: 70%;
+  animation: flower-float 6s ease-in-out infinite;
+  animation-delay: var(--flower-delay, 0s);
+  filter: drop-shadow(0 10px 12px rgba(133, 80, 102, 0.15));
+}
+
+.css-flower-petal {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 34%;
+  height: 48%;
+  border-radius: 50% 50% 42% 42%;
+  background: var(--flower-color, #f9a8d4);
+  transform-origin: 50% 100%;
+  box-shadow: inset -3px -4px 7px rgba(130, 60, 90, 0.08);
+}
+
+.css-flower-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 25%;
+  height: 25%;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle at 35% 30%, #fff3bf, #e8b86d);
+  box-shadow: 0 2px 5px rgba(120, 75, 40, 0.15);
+}
+
+@keyframes flower-float {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(-8deg);
+  }
+
+  50% {
+    transform: translate3d(0, -22px, 18px) rotate(8deg);
+  }
+}
+
+@media (max-width: 640px) {
+  .floating-flower-plane {
+    opacity: 0.65;
+  }
+
+  .floating-flower-plane:nth-of-type(5),
+  .floating-flower-plane:nth-of-type(6) {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .css-flower {
+    animation: none;
+  }
+}

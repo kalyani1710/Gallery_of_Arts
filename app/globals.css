@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap");
+@import "tailwindcss";
+
+:root {
+  color-scheme: light;
+  --gallery-paper: #fff9f5;
+  --gallery-surface: #ffffff;
+  --gallery-ink: #49333c;
+  --gallery-muted: #806a72;
+  --gallery-primary: #b94d76;
+  --gallery-primary-dark: #893d51;
+  --gallery-accent: #d5ad72;
+  --gallery-soft-cream: #f8efe8;
+  --gallery-soft-pink: #faeff1;
+  --gallery-soft-lavender: #ece8f2;
+  --gallery-border: #eedfe1;
+
+  /* Keep the original variables available to existing custom CSS. */
+  --primary: var(--gallery-primary);
+  --gold: var(--gallery-accent);
+  --bg: var(--gallery-paper);
+  --surface: var(--gallery-surface);
+  --dark: var(--gallery-ink);
+}
+
+@theme inline {
+  --color-primary: var(--gallery-primary);
+  --color-primary-dark: var(--gallery-primary-dark);
+  --color-accent: var(--gallery-accent);
+  --color-ink: var(--gallery-ink);
+  --color-muted: var(--gallery-muted);
+  --color-soft-cream: var(--gallery-soft-cream);
+  --color-soft-pink: var(--gallery-soft-pink);
+  --color-soft-lavender: var(--gallery-soft-lavender);
+  --color-gallery-paper: var(--gallery-paper);
+  --color-gallery-border: var(--gallery-border);
+  --font-sans: "Inter", sans-serif;
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-display: "Playfair Display", Georgia, serif;
+  --radius-card: 1.5rem;
+  --shadow-card: 0 12px 36px rgb(73 51 60 / 8%);
+}
+
+@utility page-container {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 80rem;
+  padding-inline: clamp(1rem, 4vw, 2.5rem);
+}
+
+@utility page-container-narrow {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 72rem;
+  padding-inline: clamp(1rem, 4vw, 2.5rem);
+}
+
+@utility section-space {
+  padding-block: clamp(3.5rem, 7vw, 6.5rem);
+}
+
+@utility editorial-eyebrow {
+  color: var(--gallery-primary);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--gallery-paper);
+  color: var(--gallery-ink);
+  font-family: "Inter", sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Playfair Display", Georgia, serif;
+}
+
+.glass {
+  backdrop-filter: blur(20px);
+  background: rgb(255 255 255 / 75%);
+}
+
+.card-hover {
+  transition: transform 350ms ease, box-shadow 350ms ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--gallery-primary), var(--gallery-accent));
+  background-clip: text;
+  color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .card-hover:hover {
+    transform: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
